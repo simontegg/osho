@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp ./dist/index.html ./dist/wheel.html",
     "serve": "vite preview",
     "test": "vitest"
   },
