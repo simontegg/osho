@@ -74,7 +74,7 @@ export default function WheelPage() {
 
   function spin() {
     setSpinning(true);
-    const range = rotation() > setTarget(Math.random() * MAX_DEGREES);
+    setTarget(Math.random() * MAX_DEGREES);
     requestAnimationFrame(step);
   }
 

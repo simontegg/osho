@@ -1,41 +1,39 @@
-## Usage
+# OSHO challenge
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+## Framework and approach
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+I chose Solid JS as the framework and builts on a Solid JS template, with vite for the build system and testing, and tailwind for the styles. 
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+Solid JS is a 'React-like' framework that looks similar to React, but with different conceptual foundations (no virtual DOM, "fine-grained reactivity") and good performance. 
+I chose Solid JS because mostly because I wanted to try something new, and also because the challenge required animating a wheel and Solid JS is a reasonable choice for animations. 
 
-## Exploring the template
+The two screens are implemented  with the Solid JS Router.
 
-This template's goal is to showcase the routing features of Solid.
-It also showcase how the router and Suspense work together to parallelize data fetching tied to a route via the `.data.ts` pattern.
 
-You can learn more about it on the [`solid-app-router` repository](https://github.com/solidjs/solid-app-router)
+## State management
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+The challenge required the state should ideally persist between application launches. 
+I decided to store application state in the url params. This meets requirements but avoids a server and database. The persisted state only needs to be a list of options and the rotation of the wheel so this was feasible. 
 
-## Available Scripts
+Calculating the winning option was pretty challenging with a algebraic approach. So instead I took a more 'brute force' approach and detected the most rightward label. This ended up only being 10 LOC, so perhaps less satisfying from a mathematical approach but it got the job done.
 
-In the project directory, you can run:
 
-### `npm dev` or `npm start`
+## UX Considerations
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The design was a little light, so added several adjustments to improve the UX:
+ - An "Edit" button to get back to the Input page.
+ - A way to delete an option.
+ - A way to add an option.
+ - A maximum of 10 options and a minimum of 2 (enforced by removing add/delete functionality).
+ - Error detection for blank and duplicate options. Navigation disabled until these were fixed (with warning).
+ - Labelling the options on the wheel.
+ - Distinct colours on the wheel for each option.
+ - Reporting the winning option.
+ - Placing the "Edit" and "Done" buttons in the same position on the screen.
+ - A nice easing function to give the animation a more realistic feel. 
+ - Using Tailwind buttons and inputs. 
+ - Focusing the input of a newly added option
 
-The page will reload if you make edits.<br>
 
-### `npm run build`
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
