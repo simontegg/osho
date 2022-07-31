@@ -1,19 +1,16 @@
-import { lazy } from 'solid-js';
-import type { RouteDefinition } from 'solid-app-router';
+import { lazy } from "solid-js";
+import type { RouteDefinition } from "solid-app-router";
 
-import Input from './pages/input';
+import Input from "./pages/input";
+import Wheel from "./pages/wheel";
 
 export const routes: RouteDefinition[] = [
   {
-    path: '/',
+    path: "/",
     component: Input,
   },
   {
-    path: '/wheel',
-    component: lazy(() => import('./pages/wheel')),
-  },
-  {
-    path: '**',
-    component: lazy(() => import('./errors/404')),
+    path: "/wheel",
+    component: Wheel,
   },
 ];
